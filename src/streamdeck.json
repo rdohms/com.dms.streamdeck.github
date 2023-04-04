@@ -1,0 +1,13 @@
+{
+  "id": "com.dms.streamdeck.github",
+  "version": "0.0.0",
+  "name": "DMS Github Plugin",
+  "description": "Display and interact with information from Github on your StreamDeck+",
+  "author": "Rafael Dohms",
+  "category": "DMS Github",
+  "monitor": {
+    "windows": [],
+    "mac": []
+  },
+  "url": "https://github.com/rdohms/com.dms.streamdeck.github"
+}

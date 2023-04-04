@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@fnando/streamdeck": "*",
+    "octokit": "^2.0.14",
+    "typescript": "*"
+  },
+  "scripts": {
+    "dev": "watchman-make -p 'src/**/*' '*.json' --run 'npx @fnando/streamdeck bundle --dev'"
+  },
+  "devDependencies": {
+    "@fnando/codestyle": "^0.0.13",
+    "@fnando/eslint-config-codestyle": "^0.0.10",
+    "eslint": "^8.34.0"
+  },
+  "browser": {
+    "crypto": false,
+    "buffer": false
+  }
+}
