@@ -2,7 +2,6 @@ import {
     Action,
     DialPressEvent,
     DialRotateEvent,
-    DidReceiveGlobalSettingsEvent, DidReceiveSettingsEvent,
     Encoder,
     Layout,
     WillAppearEvent
@@ -11,7 +10,7 @@ import {Octokit} from "octokit";
 import {PluginSettings} from "../PluginSettings";
 import {DisplayStack} from "./ViewReviewRequests/DisplayStack";
 import {CardData, ErrorCard} from "./ViewReviewRequests/DisplayCard";
-import {connectingImg, downloadingImg} from "./ViewReviewRequests/images";
+import {downloadingImg} from "./ViewReviewRequests/images";
 
 const TITLE_MAX_LENGTH = 14;
 const VALUE_MAX_LENGTH = 8;
@@ -58,7 +57,6 @@ let tickerId: NodeJS.Timer;
 
 class ViewReviewRequests extends Action {
     public client: Octokit;
-    public isLoaded: boolean = false;
     public displayStack: DisplayStack = new DisplayStack();
 
     async startPollingAPI() {
@@ -74,7 +72,6 @@ class ViewReviewRequests extends Action {
         }
 
         this.client = new Octokit({ auth: settings.ghtoken });
-        // this.isLoaded = true;
     }
 
     async queryAndUpdate() {
@@ -96,25 +93,13 @@ class ViewReviewRequests extends Action {
         super.handleWillAppear(event);
         //TODO: re-trigger this when new settings arrive?
         this.setupClient(event.settings as PluginSettings);
-
-        // if (this.isLoaded === false) {
-        //     this.setFeedbackLayout(Layout.ICON_LAYOUT);
-        //     this.setFeedback({
-        //         title: 'Connecting',
-        //         icon: connectingImg,
-        //     });
-        //     await new Promise(resolve => setTimeout(resolve, 500));
-        //     await this.handleWillAppear(event);
-        //     return;
-        // }
-
         this.setFeedbackLayout(Layout.ICON_LAYOUT);
         this.setFeedback({
             title: 'Downloading PRs',
             icon: downloadingImg
         });
 
-        // TODO figure out how to keep state when replacing
+        // TODO: figure out how to keep state when replacing
         await this.startPollingAPI();
     }
 
@@ -173,5 +158,6 @@ const action = new ViewReviewRequests({
 });
 
 action.encoder = new Encoder();
+action.keyPad = false;
 
 export default action;
