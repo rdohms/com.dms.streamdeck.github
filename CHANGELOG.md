@@ -11,6 +11,10 @@ Prefix your message with one of the following:
 - [Security] in case of vulnerabilities.
 -->
 
+## Unreleased
+
+- [Fixed] Updated SDPI CSS
+
 ## v0.1.0 - 2023-04-08
 
 - [Added] View Review Requests Action for SD+
