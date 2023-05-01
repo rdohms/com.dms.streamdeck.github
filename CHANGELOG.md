@@ -16,6 +16,7 @@ Prefix your message with one of the following:
 - [Fixed] Updated SDPI CSS
 - [Changed] Improved handling of Settings update
 - [Added] Support for GitHub Enterprise
+- [Added] Disabled user title to avoid overrides
 
 ## v0.1.0 - 2023-04-08
 
