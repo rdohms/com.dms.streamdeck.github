@@ -175,5 +175,6 @@ const action = new ViewReviewRequests({
 
 action.encoder = new Encoder();
 action.keyPad = false;
+action.enableUserTitle = false;
 
 export default action;
