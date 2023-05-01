@@ -14,6 +14,8 @@ Prefix your message with one of the following:
 ## Unreleased
 
 - [Fixed] Updated SDPI CSS
+- [Changed] Improved handling of Settings update
+- [Added] Support for GitHub Enterprise
 
 ## v0.1.0 - 2023-04-08
 

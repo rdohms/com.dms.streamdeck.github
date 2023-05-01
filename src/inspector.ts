@@ -3,12 +3,14 @@ import plugin from "./plugin";
 import {PluginSettings} from "./PluginSettings";
 
 class DefaultPropertyInspector extends Inspector {
-  protected settings: PluginSettings = {ghtoken: ""};
+  protected settings: PluginSettings = {ghtoken: "", ghe_apiurl: ""};
   public ghtoken: HTMLInputElement;
+  public ghe_apiurl: HTMLInputElement;
   public saveBtn: HTMLButtonElement;
 
   handleDidConnectToSocket(): void {
     this.ghtoken = document.querySelector("#ghtoken");
+    this.ghe_apiurl = document.querySelector("#ghe_apiurl");
     this.saveBtn = document.querySelector("#save");
 
     this.saveBtn.disabled = false;
@@ -21,6 +23,7 @@ class DefaultPropertyInspector extends Inspector {
 
       this.setSettings({
         ghtoken: this.ghtoken.value,
+        ghe_apiurl: this.ghe_apiurl.value,
       });
     };
 
@@ -32,13 +35,13 @@ class DefaultPropertyInspector extends Inspector {
   }
 
   handleDidReceiveSettings({settings}: DidReceiveSettingsEvent<PluginSettings>) {
-    console.log(settings);
     this.settings = settings;
     this.fillInForm();
   }
 
   fillInForm() {
-    this.ghtoken.value = this.settings.ghtoken ?? "";
+    this.ghtoken.value = this.settings.ghtoken;
+    this.ghe_apiurl.value = this.settings.ghe_apiurl;
   }
 }
 

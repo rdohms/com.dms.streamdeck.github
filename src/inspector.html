@@ -1,26 +1,45 @@
 <link rel="stylesheet" type="text/css" href="css/sdpi.css" />
 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 
-<div class="sdpi-item">
-    <label class="sdpi-item-label" for="ghtoken">Github Token</label>
-    <input class="sdpi-item-value" type="password" id="ghtoken">
-</div>
+<div class="sdpi-wrapper">
+    <div class="sdpi-heading"><b>Github API Authentication</b></div>
 
-<div class="sdpi-item">
-    <div style="width: 94px"></div>
-    <button disabled class="sdpi-item-value" id="save">Save</button>
-</div>
+    <div class="sdpi-item" type="field">
+        <label class="sdpi-item-label" for="ghtoken">Github Token</label>
+        <input class="sdpi-item-value" type="password"  id="ghtoken" required>
+    </div>
 
-<div class="sdpi-item">
-    <div style="width: 94px"></div>
-    <p>
-        To generate a Github Token visit
-        <br />
-        <a data-url="https://github.com/settings/tokens" class="link">https://github.com/settings/tokens</a>
-        <br>
-        <br>
-        Ensure the token has the <i>repo, workflow</i> permissions.
-    </p>
-</div>
+    <div class="sdpi-item">
+        <details class="message question">
+            <summary>How do I get a token?</summary>
+            <p>
+                You can generate tokens at:<br />
+                <a data-url="https://github.com/settings/tokens" class="link">https://github.com/settings/tokens</a>
+            </p>
+            <p>Ensure the token has the <i>repo, workflow</i> permissions.</p>
+        </details>
+    </div>
 
+    <div class="sdpi-heading"><b>Github Enterprise</b></div>
+
+    <div class="sdpi-item">
+        <p>To configure this plugin to use your Github Enterprise instance, set the API url below.</p>
+    </div>
+
+    <div class="sdpi-item" type="field">
+        <label class="sdpi-item-label" for="ghe_apiurl">API Url</label>
+        <input class="sdpi-item-value" type="url" id="ghe_apiurl">
+    </div>
+
+    <div class="sdpi-item">
+        <div class="sdpi-item-label empty"></div>
+        <div class="sdpi-item-value">
+            <p>Ex: https://github.acme.com/api/v3</p>
+        </div>
+    </div>
+
+    <div class="sdpi-item" type="button">
+        <button disabled class="sdpi-item-value" id="save">Save</button>
+    </div>
+</div>
 <script src="inspector.js"></script>
